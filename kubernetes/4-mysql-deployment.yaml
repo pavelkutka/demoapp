@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: database
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-mysql
+  namespace: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-mysql
+  template:
+    metadata:
+      labels:
+        app: test-mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "testpass"
+            - name: MYSQL_DATABASE
+              value: "demoapp"
+          ports:
+            - containerPort: 3306
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-mysql
+  namespace: database
+spec:
+  selector:
+    app: test-mysql
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+  type: ClusterIP
