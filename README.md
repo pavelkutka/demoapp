@@ -5,6 +5,8 @@ This project demonstrates a 3-tier architecture:
 - **Backend:** Node.js application running in AKS
 - **Database:** MySQL (either as a container in AKS or as Azure Database for MySQL PaaS)
 
+![Architecture Diagram](img/diagram.png)
+
 ## Folder Structure
 
 ```
