@@ -25,28 +25,27 @@ spec:
             - containerPort: 3000
           env:
             # MySQL container:
-            - name: MYSQLHOST
-              value: "test-mysql.database.svc.cluster.local"
-            - name: MYSQLUSER
-              value: "root"
-            - name: MYSQLPASSWORD
-              value: "testpass"
-            - name: MYSQLDATABASE
-              value: "demoapp"
-            - name: MYSQLPORT
-              value: "3306"
-
-            # Azure MySQL PaaS:
             # - name: MYSQLHOST
-            #   value: "pk-akscommunity-ne-mysql01.mysql.database.azure.com"
+            #   value: "test-mysql.database.svc.cluster.local"
             # - name: MYSQLUSER
-            #   value: "demoadm@pk-akscommunity-ne-mysql01"
+            #   value: "root"
             # - name: MYSQLPASSWORD
-            #   value: "MySQL4dm!n"
+            #   value: "testpass"
             # - name: MYSQLDATABASE
             #   value: "demoapp"
             # - name: MYSQLPORT
             #   value: "3306"
+
+            - name: MYSQLHOST
+              value: "pk-demoapp-ne-mysql01.mysql.database.azure.com"
+            - name: MYSQLUSER
+              value: "demoadm"
+            - name: MYSQLPASSWORD
+              value: "MySQL4dm!n"
+            - name: MYSQLDATABASE
+              value: "demoapp"
+            - name: MYSQLPORT
+              value: "3306"
 ---
 apiVersion: v1
 kind: Service
